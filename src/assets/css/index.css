@@ -19,3 +19,14 @@ code {
 .list li {
   line-height: 30px;
 }
+
+.title {
+  height: 54px;
+  line-height: 44px;
+  text-align: center;
+  background: yellow;
+}
+
+.title input {
+  height: 30px;
+}
