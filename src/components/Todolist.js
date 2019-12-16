@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import '../assets/css/index.css'
+import Storage from '../module/storage'
+
+
 class Todolist extends Component {
     constructor(props) {
         super(props);
@@ -32,7 +35,7 @@ class Todolist extends Component {
             this.refs.title.value = "";
         }
 
-        localStorage.setItem("todolist", JSON.stringify(tempList));
+        Storage.set("todolist", tempList);
     }
 
     removeData = (key) => {
@@ -42,7 +45,7 @@ class Todolist extends Component {
             list: tempList
         })
 
-        localStorage.setItem("todolist", JSON.stringify(tempList));
+        Storage.set("todolist", tempList);
     }
 
     checkboxChange = (key) => {
@@ -51,12 +54,12 @@ class Todolist extends Component {
         this.setState({
             list: tempList
         })
-        localStorage.setItem("todolist", JSON.stringify(tempList));
+        Storage.set("todolist", tempList);
 
     }
 
     componentDidMount(){
-        var todolist = JSON.parse(localStorage.getItem("todolist"));
+        var todolist = Storage.get("todolist");
         if(todolist){
             this.setState({
                 list: todolist
