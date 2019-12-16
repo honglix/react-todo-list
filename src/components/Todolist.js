@@ -31,6 +31,8 @@ class Todolist extends Component {
             })
             this.refs.title.value = "";
         }
+
+        localStorage.setItem("todolist", JSON.stringify(tempList));
     }
 
     removeData = (key) => {
@@ -39,6 +41,8 @@ class Todolist extends Component {
         this.setState({
             list: tempList
         })
+
+        localStorage.setItem("todolist", JSON.stringify(tempList));
     }
 
     checkboxChange = (key) => {
@@ -47,6 +51,17 @@ class Todolist extends Component {
         this.setState({
             list: tempList
         })
+        localStorage.setItem("todolist", JSON.stringify(tempList));
+
+    }
+
+    componentDidMount(){
+        var todolist = JSON.parse(localStorage.getItem("todolist"));
+        if(todolist){
+            this.setState({
+                list: todolist
+            })
+        }
 
     }
     render() {
